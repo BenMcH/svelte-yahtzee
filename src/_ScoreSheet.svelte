@@ -109,18 +109,18 @@
 <section>
 	<label>Name<input type="text" bind:value={name} /></label>
 	{#each Object.entries(scores) as [key, value]}
-		<label for={key}>{key} -
-			{#if value.disabled}
-				<span>{scores[key].value}</span>
-			{:else}
-				<select name={key} bind:value={scores[key].value}>
+		{#if value.disabled}
+			<span>{key} - {scores[key].value}</span>
+		{:else}
+			<label>{key} -
+				<select bind:value={scores[key].value}>
 					<option value={undefined}></option>
 					{#each scores[key].validValues as val}
 						<option value={val}>{val}</option>
 					{/each}
 				</select>
-			{/if}
-		</label>
+			</label>
+		{/if}
 	{/each}
 </section>
 
