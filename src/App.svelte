@@ -2,6 +2,10 @@
 	import ScoreSheet from './_ScoreSheet.svelte';
 
 	let players = 2;
+
+	let scores = [];
+
+	$: scores.length > players && players >= 0 ? scores = scores.slice(0, players) : undefined;
 </script>
 
 <main>
@@ -9,20 +13,25 @@
 	<label>Players <input type="number" bind:value={players} /></label>
 	<section>
 		{#each Array(players < 0 ? 0 : players) as _, playerIndex}
-			<ScoreSheet />
+			<ScoreSheet bind:scores={scores[playerIndex]} />
 		{/each}
 	</section>
 </main>
 
 <style>
-	section {
+	main, section {
 		display: flex;
 		align-items: center;
-		justify-content: center;
 		gap: 1rem;
 	}
 	main {
-		text-align: center;
+		flex-direction: column;
+		padding-bottom: 2rem;
+	}
+
+	section {
+		max-width: 80vw;
+		overflow-x: auto;
 	}
 
 	h1 {

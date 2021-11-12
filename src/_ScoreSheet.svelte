@@ -3,7 +3,7 @@
 	const totalTopDiceRolls = (n) => Array.from({length: 6}).map((_, index) => index * n)
 	const totalAllDice = [...Array.from({length: 26}).map((_, index) => index + 5), 0].sort(sortFunc);
 
-	const scores = {
+	export let scores = {
 		'1': {
 			description: 'Total of ones',
 			validValues: totalTopDiceRolls(1)
@@ -110,9 +110,9 @@
 	<label>Name<input type="text" bind:value={name} /></label>
 	{#each Object.entries(scores) as [key, value]}
 		{#if value.disabled}
-			<span>{key} - {scores[key].value}</span>
+			<span><span>{key}</span> {scores[key].value}</span>
 		{:else}
-			<label>{key} -
+			<label>{key}
 				<select bind:value={scores[key].value}>
 					<option value={undefined}></option>
 					{#each scores[key].validValues as val}
@@ -128,16 +128,20 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-end;
 		gap: 0.5rem;
+
+		border: 1px solid #1f1f1f;
+		border-radius: 10px;;
+
+		padding: 2rem;
 	}
 
-	label {
-		position: relative
-	}
-	
-	label {
+	label, span {
 		padding: 0.2rem 0rem;
+		width:275px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 
 	input, select {
