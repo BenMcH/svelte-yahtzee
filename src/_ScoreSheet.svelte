@@ -68,7 +68,7 @@
 		},
 		'Chance': {
 			description: 'Add Total of All Dice',
-			validValues: totalAllDice
+			validValues: totalAllDice.filter((number) => number != 0)
 		},
 		'Bottom Total': {
 			disabled: true,
