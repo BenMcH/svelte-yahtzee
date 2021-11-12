@@ -37,7 +37,7 @@
 	@media(max-width: 768px) {
 		section {
 			max-width: 100%;
-			padding: 1rem;
+			padding: 0 4px;
 		}
 	}
 
