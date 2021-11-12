@@ -34,6 +34,18 @@
 		overflow-x: auto;
 	}
 
+	@media(max-width: 768px) {
+		section {
+			max-width: 100%;
+			padding: 1rem;
+		}
+	}
+
+	section {
+		max-width: 80vw;
+		overflow-x: auto;
+	}
+
 	h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
